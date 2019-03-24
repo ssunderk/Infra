@@ -4,7 +4,7 @@ SET output_dir="C:\Personal\Projects\Engaze\local-nuget-server"
 
 SET version_suffix=alpha
 
-SET version_prefix=1.0.1
+SET version_prefix=1.0.2
 
 SET project_dir="C:\Personal\Projects\Engaze\Core"
 

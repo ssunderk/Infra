@@ -30,10 +30,22 @@ services:
     networks:
       - engaze-network
       
-  zoo-publishservice:
+  eventosubscriber:
+    image: eventosubscriber
+    restart: always
+    container_name: eventosubscriber   
+    volumes:
+      - 'eventosubscribe:/usr/share//eventosubscribe/log'
+    environment:     
+      - EVENTSTORE_CONNSTRING="tcp://event-store:1113"
+    networks:
+      - engaze-network
+      
+  evento-zoo:
     image: zookeeper
     restart: always
-    hostname: zoo1
+    container_name: eventozoo
+    hostname: evento-zoo
     ports:
       - 2181:2181
     environment:
@@ -44,17 +56,19 @@ services:
     volumes:
       - 'zookeeper_data:/usr/share/zookeeper'
  
-  kafka-publishservice:
+  evento-kafka:
     image: 'bitnami/kafka:0'
+    container_name: eventokafka
+    hostname: evento-kafka
     ports:
       - '9092:9092'
     volumes:
       - 'kafka_data:/usr/share//kafka'
     environment:
-      - KAFKA_ZOOKEEPER_CONNECT=zoo-publishservice:2181
+      - KAFKA_ZOOKEEPER_CONNECT=evento-zoo:2181
       - KAFKA_NUM_PARTITIONS=3
       - ALLOW_PLAINTEXT_LISTENER=yes
-      - KAFKA_CREATE_TOPICS:test:3:1:compact     
+      - KAFKA_CREATE_TOPICS:evento:3:1:compact     
       - KAFKA_LISTENERS=PLAINTEXT://:9092
       - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://192.168.0.102:9092
       
@@ -68,6 +82,7 @@ networks:
     
 volumes:
   eventowrite_api:
+  eventosubscribe:
   eventowrite_eventstore_db:
   eventowrite_eventstore_log:
   kafka_data:

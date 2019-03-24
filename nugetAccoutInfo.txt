@@ -1,6 +1,9 @@
-elogin: ngaze@outlook.com
+login: engaze@outlook.com
 password: LetsBuild
+
+recovery code - NUZGH-XQ7NU-DNXLX-EXDS6-63NN6
 
 nuget Key:
 
 oy2dnnzoyw4c5iewdhwqsc5anjw3ozdu7gmwspl47u67se
+command to push >dotnet nuget push Engaze.Core.MessageBroker.Producer.1.0.1-alpha.nupkg -k oy2dnnzoyw4c5iewdhwqsc5anjw3ozdu7gmwspl47u67se -s https://api.nuget.org/v3/index.json
