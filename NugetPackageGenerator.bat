@@ -2,9 +2,9 @@ ECHO OFF
 
 SET output_dir="C:\Personal\Projects\Engaze\local-nuget-server"
 
-SET version_suffix=std
+SET version_suffix=alpha
 
-SET version_prefix=9000.1001.1
+SET version_prefix=1.0.1
 
 SET project_dir="C:\Personal\Projects\Engaze\Core"
 
@@ -15,7 +15,7 @@ SET version="%version_prefix%-%version_suffix%"
 
 FOR /R %project_dir% %%G IN (*.csproj) DO (
 
-dotnet pack %%G -p:PackageVersion=%version% -p:TargetFrameworks=netstandard2.0 --no-build --output %output_dir% --configuration Release
+dotnet pack %%G -p:PackageVersion=%version% -p:TargetFrameworks=netstandard2.0 --no-build --output %output_dir% --configuration Debug
 
 )
 

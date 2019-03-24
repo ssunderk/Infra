@@ -1,0 +1,6 @@
+elogin: ngaze@outlook.com
+password: LetsBuild
+
+nuget Key:
+
+oy2dnnzoyw4c5iewdhwqsc5anjw3ozdu7gmwspl47u67se
