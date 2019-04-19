@@ -72,8 +72,11 @@ services:
       - ALLOW_PLAINTEXT_LISTENER=yes
       - KAFKA_CREATE_TOPICS:evento:3:1:compact     
       - KAFKA_LISTENERS=PLAINTEXT://:9092
-      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://192.168.0.102:9092
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://${KAFKAHOST}:9092 #ipaddress of the host machine, to access outside 
+      #container update the host file and map localhost to ${KAFKAHOST} i.e evento-kafka
       
+    depends_on:
+      - evento-zoo 
     networks:
       - engaze-network      
   
