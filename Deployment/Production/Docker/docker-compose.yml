@@ -15,6 +15,9 @@ services:
     ports:
       - "2113:2113"
       - "1113:1113"  
+    environment:
+      - EVENTSTORE_RUN_PROJECTIONS=ALL
+      - EVENTSTORE_START_STANDARD_PROJECTIONS=true
       
   evento-zoo:
     image: zookeeper
@@ -55,6 +58,7 @@ services:
       
   eventowrite:
     image: engaze/eventowrite
+    entrypoint: /bin/bash -c "echo 'Waiting for event-store to up and running' && sleep 30 && dotnet Engaze.Evento.API.dll" 
     restart: always
     container_name: eventowrite
     hostname: ${EVENTOWRITEHOST}
@@ -72,6 +76,7 @@ services:
       
   eventosubscriber:
     image: engaze/eventosubscriber
+    entrypoint: /bin/bash -c "echo 'Waiting for event-store and kafka to up and running' && sleep 60 && dotnet Engaze.EventSubscriber.Service.dll"
     restart: always
     container_name: eventosubscriber   
     volumes:
