@@ -1,12 +1,12 @@
 ECHO OFF
 
-SET output_dir="C:\Personal\Projects\Engaze\local-nuget-server"
+SET output_dir="E:\Atul\Engaze\local-nuget-server"
 
 SET version_suffix=alpha
 
-SET version_prefix=1.0.4
+SET version_prefix=1.0.5
 
-SET project_dir="C:\Personal\Projects\Engaze\Core"
+SET project_dir="E:\Atul\Engaze\Core"
 
 SET curr_dir=%cd%"
 
