@@ -6,7 +6,7 @@ services:
     image: zookeeper
     restart: always
     container_name: eventozoo
-    hostname: ${ZOOKEEPERHOST}
+    hostname: evento-zoo
     ports:
       - 2181:2181
     environment:
@@ -20,7 +20,7 @@ services:
   evento-kafka:
     image: 'bitnami/kafka:0'
     container_name: eventokafka
-    hostname: ${KAFKAHOST}
+    hostname: evento-kafka
     ports:
       - '9092:9092'
     volumes:
