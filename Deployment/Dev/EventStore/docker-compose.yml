@@ -1,0 +1,31 @@
+version: '3.1'
+
+services: 
+  
+  event-store:
+    image: eventstore/eventstore
+    restart: always
+    container_name: eventstore
+    hostname: event-store
+    networks:
+      - engaze-network
+    volumes:
+      - 'eventowrite_eventstore_db:/usr/share//eventowrite/data/db'
+      - 'eventowrite_eventstore_log:/usr/share//eventowrite/data/log' 
+    ports:
+      - "2113:2113"
+      - "1113:1113"  
+    environment:
+      - EVENTSTORE_RUN_PROJECTIONS=ALL
+      - EVENTSTORE_START_STANDARD_PROJECTIONS=true     
+   
+    networks:
+      - engaze-network      
+  
+networks:
+  engaze-network:
+    driver: bridge
+    
+volumes: 
+  eventowrite_eventstore_db:
+  eventowrite_eventstore_log:
