@@ -13,7 +13,7 @@ services:
       ZOO_MY_ID: 1
       ZOO_SERVERS: server.1=0.0.0.0:2888:3888
     networks:
-      - engaze-network
+      hostnet: {}
     volumes:
       - 'zookeeper_data:/usr/share/zookeeper'
  
@@ -37,13 +37,13 @@ services:
     depends_on:
       - evento-zoo 
     networks:
-      - engaze-network
+      hostnet: {}
       
  
 networks:
-  engaze-network:    
-    external:
-      name: host
+  hostnet:
+   external: true
+   name: host
     
 volumes:
   kafka_data:
