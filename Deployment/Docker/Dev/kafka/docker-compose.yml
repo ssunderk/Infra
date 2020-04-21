@@ -37,7 +37,7 @@ services:
     depends_on:
       - evento-zoo 
     networks:
-      - engaze-network 
+      - engaze-network
       
  
 networks:
