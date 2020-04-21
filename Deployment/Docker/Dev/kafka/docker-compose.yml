@@ -21,7 +21,6 @@ services:
     image: 'bitnami/kafka:0'
     container_name: eventokafka
     hostname: ${KAFKAHOST}
-    network_mode: "host"
     ports:
       - '9092:9092'
     volumes:
