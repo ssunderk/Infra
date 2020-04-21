@@ -43,6 +43,8 @@ services:
 networks:
   engaze-network:
     driver: bridge
+    external:
+      name: engaze-network-1
     
 volumes:
   kafka_data:
