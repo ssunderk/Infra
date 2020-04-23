@@ -13,9 +13,7 @@ services:
       - ALLOW_PLAINTEXT_LISTENER=yes
       - KAFKA_CREATE_TOPICS:evento:3:1:compact     
       - KAFKA_LISTENERS=PLAINTEXT://:9092
-      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka1:9092 
-    depends_on:
-      - zookeeper1
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka1:9092     
 
     networks:
       - engaze-network    
