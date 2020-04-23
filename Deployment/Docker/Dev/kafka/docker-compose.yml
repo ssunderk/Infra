@@ -21,4 +21,4 @@ services:
 networks:
   engaze-network:
     external:
-      name: eventstore_engaze-network   
+      name: engaze-network   
