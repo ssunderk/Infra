@@ -73,5 +73,6 @@ services:
   
 networks:
   engaze-network:
-    driver: bridge
+    external:
+      name: engaze-network
     
