@@ -1,0 +1,49 @@
+version: '3.1'
+
+services:   
+      
+  evento-zoo:
+    image: zookeeper
+    restart: always
+    container_name: eventozoo
+    hostname: ${ZOOKEEPERHOST}
+    ports:
+      - 2181:2181
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_SERVERS: server.1=0.0.0.0:2888:3888
+    networks:
+      - engaze-network
+    volumes:
+      - 'zookeeper_data:/usr/share/zookeeper'
+ 
+  evento-kafka:
+    image: 'bitnami/kafka:0'
+    container_name: eventokafka
+    hostname: ${KAFKAHOST}
+    ports:
+      - '9092:9092'
+    volumes:
+      - 'kafka_data:/usr/share//kafka'
+    environment:
+      - KAFKA_ZOOKEEPER_CONNECT=${ZOOKEEPERHOST}:2181
+      - KAFKA_NUM_PARTITIONS=3
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_CREATE_TOPICS:evento:3:1:compact     
+      - KAFKA_LISTENERS=PLAINTEXT://:9092
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://${KAFKAHOST}:9092 #ipaddress of the host machine, to access outside 
+      #container update the host file and map localhost to ${KAFKAHOST} i.e evento-kafka
+      
+    depends_on:
+      - evento-zoo 
+    networks:
+      - engaze-network 
+  
+networks:
+  engaze-network:
+    external:
+      name: engaze-network
+    
+volumes:  
+  kafka_data:
+  zookeeper_data:
