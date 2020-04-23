@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  zookeeper1:
+    image: 'bitnami/zookeeper:latest'
+    ports:
+      - 2181:2181
+      - 2888:2888
+      - 3888:3888
+    volumes:
+      - /path/to/zookeeper-persistence:/engaze/zookeeper
+    environment:
+      - ZOO_SERVER_ID=1
+      - ZOO_SERVERS=0.0.0.0:2888:3888
+    networks:
+      - engaze-network
+      
+networks:
+  engaze-network:
+    external:
+      name: engaze-network
