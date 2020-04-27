@@ -4,7 +4,7 @@ SET output_dir="E:\Atul\Engaze\local-nuget-server"
 
 SET version_suffix=alpha
 
-SET version_prefix=1.0.5
+SET version_prefix=1.0.8
 
 SET project_dir="E:\Atul\Engaze\Core"
 
@@ -15,7 +15,7 @@ SET version="%version_prefix%-%version_suffix%"
 
 FOR /R %project_dir% %%G IN (*.csproj) DO (
 
-dotnet pack %%G -p:PackageVersion=%version% -p:TargetFrameworks=netstandard2.0 --no-build --output %output_dir% --configuration Debug
+dotnet pack %%G -p:PackageVersion=%version% --no-build --output %output_dir% --configuration Debug
 
 )
 
