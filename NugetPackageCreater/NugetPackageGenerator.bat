@@ -24,6 +24,10 @@ SET curr_dir=%cd%"
 
 SET version="%version_prefix%-%version_suffix%"
 
+::Delete output_dir if already exists
+
+RMDIR /S /Q  %output_dir%
+
 
 FOR /R %project_dir% %%G IN (*.csproj) DO (
 
@@ -38,9 +42,25 @@ FOR %%G in ("%output_dir%\*.nupkg") DO (
 nuget add %%G -source %output_dir%
 )
 
+SET /P upload_required=Do you want to upload packages to nuget server? Y/N:
+
+IF "%upload_required%" NEQ "y" GOTO OK
+
+FOR %%G in ("%output_dir%\*.nupkg") DO (
+dotnet nuget push %%G -k oy2knfrbqz2alzkedmyajol4hpxb2yrunkoeiojtb7dsue -s https://api.nuget.org/v3/index.json
+)
+
+SET /P delete_required=Do you want to delete local nuget temp folder? Y/N:
+IF "%delete_required%" NEQ "y" GOTO OK
+RMDIR /S /Q  %output_dir%
+
+
 ECHO %errorlevel%
 IF %errorlevel% NEQ 0 ( GOTO ERROR )
 GOTO OK
+
+
+
 
 :ERROR
 ECHO ON
