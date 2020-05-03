@@ -7,6 +7,8 @@
 *.userosscache
 *.sln.docstates
 
+local-nuget-repo/
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
