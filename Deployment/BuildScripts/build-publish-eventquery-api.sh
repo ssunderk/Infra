@@ -20,6 +20,9 @@ else
   
 fi
 
+echo "stopping EventQuery.Service.dll"
+kill $(ps aux | grep 'EventQuery.Service.dll' | awk '{print $2}')
+
 echo "Cloning https://github.com/redtopdev/EventQuery.git"
 git clone https://github.com/redtopdev/EventQuery.git
 echo "Building ~/git/EventQuery/EventQuery.sln"

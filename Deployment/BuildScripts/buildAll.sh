@@ -1,9 +1,4 @@
-echo "stopping EventQuery.Service.dll"
-kill $(ps aux | grep 'EventQuery.Service.dll' | awk '{print $2}')
-echo "stopping SubScriber.Service.dll"
-kill $(ps aux | grep 'Subscriber.Service.dll' | awk '{print $2}')
-echo "stopping Engaze.Evento.ViewDataUpdater.Service.dll"
-kill $(ps aux | grep 'Engaze.Evento.ViewDataUpdater.Service.dll' | awk '{print $2}')
+
 echo "stopping Engaze.EventSubscriber.Service"
 kill $(ps aux | grep 'Engaze.EventSubscriber.Service' | awk '{print $2}')
 ./build-scripts/build-publish-eventquery-api.sh  

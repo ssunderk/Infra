@@ -20,6 +20,10 @@ else
   
 fi
 
+
+echo "stopping SubScriber.Service.dll"
+kill $(ps aux | grep 'Subscriber.Service.dll' | awk '{print $2}')
+
 echo "Cloning https://github.com/redtopdev/ManageSubscriber.git"
 git clone https://github.com/redtopdev/ManageSubscriber.git
 echo "Building ~/git/RegisterAPI/All.sln"

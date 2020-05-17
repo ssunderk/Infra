@@ -20,6 +20,10 @@ else
   
 fi
 
+
+echo "stopping Engaze.Evento.ViewDataUpdater.Service.dll"
+kill $(ps aux | grep 'Engaze.Evento.ViewDataUpdater.Service.dll' | awk '{print $2}')
+
 echo "Cloning https://github.com/redtopdev/EventoViewDataUpdater.git"
 git clone https://github.com/redtopdev/EventoViewDataUpdater.git
 echo "Building ~/git/EventoViewDataUpdater/EventoViewDataUpdater.sln"
