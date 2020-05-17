@@ -22,7 +22,7 @@ fi
 
 
 echo "stopping Engaze.EventSubscriber.Service"
-kill $(ps aux | grep 'Engaze.EventSubscriber.Service' | awk '{print $2}')
+kill -9 $(ps aux | grep 'Engaze.EventSubscriber.Service' | awk '{print $2}')
 
 echo "Cloning https://github.com/redtopdev/EventSubscriber.git"
 git clone https://github.com/redtopdev/EventSubscriber.git
