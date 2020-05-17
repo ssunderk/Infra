@@ -26,7 +26,7 @@ kill $(ps aux | grep 'Subscriber.Service.dll' | awk '{print $2}')
 
 echo "Cloning https://github.com/redtopdev/ManageSubscriber.git"
 git clone https://github.com/redtopdev/ManageSubscriber.git
-echo "Building ~/git/RegisterAPI/All.sln"
+echo "Building ~/git/ManageSubscriber/All.sln"
 dotnet build --configuration debug ~/git/ManageSubscriber/All.sln
 echo "Publishing ~/git/ManageSubscriber/Service/Subscriber.csproj to ~/engaze/api/managesubscriber/  folder."
 dotnet publish --output ~/engaze/api/managesubscriber/ ~/git/ManageSubscriber/Service/Subscriber.csproj
