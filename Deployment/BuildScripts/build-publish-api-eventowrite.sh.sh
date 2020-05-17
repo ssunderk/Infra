@@ -21,8 +21,8 @@ else
 fi
 
 
-echo "stopping SubScriber.Service.dll"
-kill $(ps aux | grep 'Subscriber.Service.dll' | awk '{print $2}')
+echo "stopping Evento.Service"
+kill $(ps aux | grep 'Evento.Service.dll' | awk '{print $2}')
 
 echo "Cloning https://github.com/redtopdev/EventoWriteAPI.git"
 git clone https://github.com/redtopdev/EventoWriteAPI.git
